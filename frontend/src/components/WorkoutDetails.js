@@ -29,17 +29,17 @@ const WorkoutDetails = ({ workout }) => {
   // Add a conditional check to prevent rendering if workout is undefined
   if (!workout) {
     return <div className="workout-details">Loading workout details...</div>
+  } else {
+    return (
+      <div className="workout-details">
+        <h4>{workout.title || 'No Title'}</h4>
+        <p><strong>Load (kg): </strong>{workout.load || 'N/A'}</p>
+        <p><strong>Number of reps: </strong>{workout.reps || 'N/A'}</p>
+        <p>{formatDistanceToNow(new Date(workout.createdAt || Date.now()), { addSuffix: true })}</p>
+        <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+      </div>
+    )
   }
-
-  return (
-    <div className="workout-details">
-      <h4>{workout.title || 'No Title'}</h4>
-      <p><strong>Load (kg): </strong>{workout.load || 'N/A'}</p>
-      <p><strong>Number of reps: </strong>{workout.reps || 'N/A'}</p>
-      <p>{formatDistanceToNow(new Date(workout.createdAt || Date.now()), { addSuffix: true })}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-    </div>
-  )
 }
 
 export default WorkoutDetails

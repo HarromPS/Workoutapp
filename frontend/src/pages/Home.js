@@ -11,6 +11,7 @@ const Home = () => {
       try {
         const response = await fetch('/api/workouts')
         const json = await response.json()
+        // console.log(workouts);
 
         if (response.ok) {
           dispatch({ type: 'SET_WORKOUTS', payload: json })
@@ -29,7 +30,7 @@ const Home = () => {
     <div className="home">
       <div className="workouts">
         {workouts && workouts.length > 0 ? (
-          workouts.map(workout => (
+          workouts.map((workout,index) => (
             <WorkoutDetails workout={workout} key={workout._id} />
           ))
         ) : (

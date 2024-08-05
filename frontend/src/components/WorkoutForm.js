@@ -28,12 +28,12 @@ const WorkoutForm = () => {
         setError(json.error);
         setEmptyFields(json.emptyFields || []);
       } else {
+        dispatch({ type: 'CREATE_WORKOUT', payload: json });
         setEmptyFields([]);
         setError(null);
         setTitle('');
         setLoad('');
         setReps('');
-        dispatch({ type: 'CREATE_WORKOUT', payload: json });
       }
     } catch (err) {
       console.error('Failed to create workout:', err);
@@ -48,7 +48,7 @@ const WorkoutForm = () => {
       <label>Exercise Title:</label>
       <input
         type="text"
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {setTitle(e.target.value);}}
         value={title}
         className={emptyFields.includes('title') ? 'error' : ''}
       />
@@ -56,7 +56,7 @@ const WorkoutForm = () => {
       <label>Load (in kg):</label>
       <input
         type="number"
-        onChange={(e) => setLoad(e.target.value)}
+        onChange={(e) => {setLoad(e.target.value);}}
         value={load}
         className={emptyFields.includes('load') ? 'error' : ''}
       />
@@ -64,7 +64,7 @@ const WorkoutForm = () => {
       <label>Number of Reps:</label>
       <input
         type="number"
-        onChange={(e) => setReps(e.target.value)}
+        onChange={(e) => {setReps(e.target.value);}}
         value={reps}
         className={emptyFields.includes('reps') ? 'error' : ''}
       />

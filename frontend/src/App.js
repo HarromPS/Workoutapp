@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/home';  // Ensure this matches the actual file name (case-sensitive)
+import Home from './pages/Home';  // Ensure this matches the actual file name (case-sensitive)
 import Navbar from './components/Navbar';
 
 function App() {
